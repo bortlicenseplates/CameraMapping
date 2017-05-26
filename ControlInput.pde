@@ -1,9 +1,11 @@
 void mouseReleased()
 {
-  
+
   println("CLICKED TO CREATE TRACKER");
-  blobTracker.createBlob(mouseX,mouseY);
-  
+  if (!keyPressed)
+    blobTracker.createBlob(mouseX, mouseY);
+  else
+    blobTracker.trainBG(mouseX, mouseY);
 }
 
 boolean showPositivepixels;
@@ -12,25 +14,28 @@ boolean showInfo;
 
 void keyReleased()
 {
-  
+
   switch(key)
   {
-    
+    case'b':
+      BGT.displayUI = !BGT.displayUI;
+      break;
+      
     case'p':
-    showPositivepixels = !showPositivepixels;
-    break;
-    
+      showPositivepixels = !showPositivepixels;
+      break;
+  
     case'h':
-    showHistogram = !showHistogram;
-    break;
-    
+      showHistogram = !showHistogram;
+      break;
+  
     case'i':
-    showInfo = !showInfo;
-    break;
-    
+      showInfo = !showInfo;
+      break;
+    case'B':
+      BGT.checkBG = !BGT.checkBG;
+      break;
     default:
-    break;
-    
+      break;
   }
 }
-  

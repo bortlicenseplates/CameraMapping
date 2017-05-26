@@ -15,6 +15,8 @@ void setup()
   
   blobTracker = new BlobTracker();
   
+  BGT = new BackgroundTraining(15,15,15);
+  
 }
 void draw()
 {
@@ -43,6 +45,7 @@ void draw()
   {
     showHistogram1();
   }
+  BGT.displayBGInfo(mouseX,mouseY,20);
   
 }
 void showInfo()
