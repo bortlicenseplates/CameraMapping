@@ -10,13 +10,11 @@ void setup()
   
   frameRate(120);
   
-  syphonClient = new SyphonClient(this, "VDMX5");
+  syphonClient = new SyphonClient(this);
   syphonManager = new SyphonManager();
   
   blobTracker = new BlobTracker();
-  
-  BGT = new BackgroundTraining(15,15,15);
-  
+  bgManager = new BackgroundManager();
 }
 void draw()
 {
@@ -32,7 +30,7 @@ void draw()
   //update trackers
   blobTracker.updateTrackers();
   //delete the oldest tracker if there's more than 3
-  blobTracker.limitTrackerCount(3);
+  blobTracker.limitTrackerCount(1);
   
   //show framerate, etc
   if (showInfo)
@@ -45,7 +43,9 @@ void draw()
   {
     showHistogram1();
   }
-  BGT.displayBGInfo(mouseX,mouseY,20);
+  if(showBGCols){
+    bgManager.showCols();
+  }
   
 }
 void showInfo()

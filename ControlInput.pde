@@ -1,26 +1,29 @@
 void mouseReleased()
 {
-
-  println("CLICKED TO CREATE TRACKER");
-  if (!keyPressed)
+  if (!keyPressed){
+    println("CLICKED TO CREATE TRACKER");
     blobTracker.createBlob(mouseX, mouseY);
-  else
-    blobTracker.trainBG(mouseX, mouseY);
+  }
+  else{
+    println("CLICKED TO DETECT BACKGROUND");
+    bgManager.createColour(mouseX,mouseY);
+  }
 }
 
 boolean showPositivepixels;
 boolean showHistogram;
 boolean showInfo;
+boolean showBGCols;
 
 void keyReleased()
 {
 
   switch(key)
   {
+    
     case'b':
-      BGT.displayUI = !BGT.displayUI;
-      break;
-      
+      showBGCols = !showBGCols;
+    
     case'p':
       showPositivepixels = !showPositivepixels;
       break;
@@ -32,9 +35,7 @@ void keyReleased()
     case'i':
       showInfo = !showInfo;
       break;
-    case'B':
-      BGT.checkBG = !BGT.checkBG;
-      break;
+      
     default:
       break;
   }

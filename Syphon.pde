@@ -13,7 +13,7 @@ class SyphonManager
   
   SyphonManager()
   {
-    inputStream = new PImage();
+    
   }
   void getInputStream()
   {
