@@ -3,6 +3,8 @@ MapCamera mapCamera;
 float realX, realY;
 float realCentreX, realCentreY;
 float xWeight, yWeight, lenseAngle;
+float cameraX_theta, cameraY_theta;
+float cameraX_position, cameraY_position, cameraZ_position;
 
 class MapCamera{
 	ArrayList<PVector> startpoints;
