@@ -1,7 +1,7 @@
 void settings()
 {
   
-  size(720,720,P2D);
+  size(1280,720,P2D);
   PJOGL.profile = 1;
   
 }
@@ -35,6 +35,7 @@ void draw()
   // blobTracker.limitTrackerCount(1);
   mapCamera.addPoints();
   mapCamera.test();
+  mapCamera.testtwo();
   
   //show framerate, etc
   if (showInfo)
