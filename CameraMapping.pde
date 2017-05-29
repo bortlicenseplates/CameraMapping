@@ -1,7 +1,7 @@
 void settings()
 {
   
-  size(1280,720,P2D);
+  size(720,720,P2D);
   PJOGL.profile = 1;
   
 }
@@ -10,27 +10,31 @@ void setup()
   
   frameRate(120);
   
-  syphonClient = new SyphonClient(this);
-  syphonManager = new SyphonManager();
+  syphonManager = new SyphonManager(this);
   
   blobTracker = new BlobTracker();
   bgManager = new BackgroundManager();
+  mapCamera = new MapCamera();
+  createControls();
 }
 void draw()
 {
   
   background(0);
-  colorMode(HSB);
+  colorMode(RGB);
   
   //update the Syphon client & update rawPixels[] array
   syphonManager.getInputStream();
   //show the input stream
   syphonManager.displayInputStream();
+  syphonManager.sendStream();
   
   //update trackers
-  blobTracker.updateTrackers();
+  // blobTracker.updateTrackers();
   //delete the oldest tracker if there's more than 3
-  blobTracker.limitTrackerCount(1);
+  // blobTracker.limitTrackerCount(1);
+  mapCamera.addPoints();
+  mapCamera.test();
   
   //show framerate, etc
   if (showInfo)
