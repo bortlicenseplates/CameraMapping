@@ -100,7 +100,7 @@ ArrayList<Tracker> trackers = new ArrayList<Tracker>();
 
 class Tracker
 {
-  
+  SmoothBox smoothBox;
   int xPos;
   int yPos;
   int leftX;
@@ -137,6 +137,7 @@ class Tracker
     println("NEW TRACKER CREATED AT: " + xPos + "," + yPos);
     println("TRACKER HUE: " + inputHue);
     println("TRACKER BRIGHTNESS: " + inputBrightness);
+    smoothBox = new SmoothBox();
     
   }
   void update()

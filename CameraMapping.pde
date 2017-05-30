@@ -16,6 +16,7 @@ void setup()
   bgManager = new BackgroundManager();
   mapCamera = new MapCamera();
   createControls();
+  testSmoothBoxSetup();
 }
 void draw()
 {
@@ -52,6 +53,7 @@ void draw()
   if(showBGCols){
     bgManager.showCols();
   }
+  testSmoothBox();
   
 }
 void showInfo()
