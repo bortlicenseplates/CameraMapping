@@ -4,32 +4,51 @@ ControlP5 cp5;
 
 void createControls(){
   cp5 = new ControlP5(this);
-  cp5.addSlider("xWeight")
+  cp5.addSlider("xWeightX")
     .setPosition(20,20)
     .setSize(150,10)
-    .setRange(-0.5,0.5)
+    .setRange(0.5,1.5)
+    .setValue(1);
     ;
 
-  cp5.addSlider("yWeight")
-    .setPosition(20,30)
+  cp5.addSlider("yWeightX")
+    .setPosition(20,40)
     .setSize(150,10)
-    .setRange(-0.5,0.5)
+    .setRange(0.5,1.5)
+    .setValue(1)
+    ;
+
+
+  cp5.addSlider("xWeightY")
+    .setPosition(200,20)
+    .setSize(150,10)
+    .setRange(0.5,1.5)
+    .setValue(1)
+    ;
+
+  cp5.addSlider("yWeightY")
+    .setPosition(200,40)
+    .setSize(150,10)
+    .setRange(0.5,1.5)
+    .setValue(1)
     ;
 
   cp5.addSlider("lenseAngle")
-    .setPosition(20,40)
+    .setPosition(20,60)
     .setSize(150,10)
-    .setRange(0,0.5)
+    .setRange(-20,20)
+    .setValue(0)
     ;
 }
 
 void mouseReleased()
 {
   if(trainTrackers && !keyPressed){
-    println(mapCamera.startpoints.size());
-    println(mapCamera.endpoints.size());
+    println(startpoints.size());
+    println(endpoints.size());
     singleClick = true;
     println(singleClick);
+
   }
   // if (!keyPressed){
   //   println("CLICKED TO CREATE TRACKER");
@@ -71,6 +90,8 @@ void keyReleased()
 
     case'1':
       println("TRAINING TRACKERS");
+      startpoints.clear();
+      endpoints.clear();
       trainTrackers = true;
       break;
 

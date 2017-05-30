@@ -10,8 +10,8 @@ int inputWidth;
 int inputHeight;
 
 
-int outputWidth = 1280;
-int outputHeight = 720;
+int outputWidth = int(1280*0.5);
+int outputHeight = int(720*0.5);
 
 class SyphonManager
 {
@@ -24,8 +24,8 @@ class SyphonManager
     syphonServer = new SyphonServer(p,"Processing Mapped");
     outputStream = createGraphics(outputWidth,outputHeight,P2D);
   }
-  void displayOutputStream(){
-    image(outputStream,inputStream.width,0);
+  void displayOutputStream(int outputX, int outputY){
+    image(outputStream,outputX,0);
   }
   void sendStream(){
     syphonServer.sendImage(outputStream);
@@ -42,9 +42,13 @@ class SyphonManager
     inputStream.loadPixels();
     rawPixels = inputStream.pixels;
     
-    inputWidth = inputStream.width;
-    inputHeight = inputStream.height;
+    inputWidth = width;
+    inputHeight = height;
     
+  }
+  void displayInputStream(int inputX, int inputY, int inputW, int inputH)
+  {
+    image(inputStream,inputX,inputY,inputWidth,inputHeight);
   }
   void displayInputStream(int inputX, int inputY)
   {

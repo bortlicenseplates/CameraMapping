@@ -1,0 +1,12 @@
+smoothBox::
+	float xyIn, float xyOut
+	float x, y, width, height;
+	float smoothingFactor << 0->1 >>
+
+	PVector boundingBox(int xIn, int yIn){
+		if(xIn && yIn -> !inside box){
+			xOut = lerp(previousx,xIn,smoothingFactor)
+		}
+		previousx, previousy = xOut, yOut
+	}
+
