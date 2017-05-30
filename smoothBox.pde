@@ -14,6 +14,7 @@ class SmoothBox{
 	float smoothedX, smoothedY;
 	float previousX;
 	float previousY;
+	float edgeX, edgeY;
 	float smoothingFactorX, smoothingFactorY;
 	float timer;
 	SmoothBox(){
@@ -27,7 +28,14 @@ class SmoothBox{
 			// println(abs(x-previousX)>mouseX-halfBox); 
 			smoothedX = smoothedX(x,smoothX);
 			previousX = smoothedX;
+			edgeX = smoothedX;
 			return smoothedX;
+		} else {
+			if((edgeX-x) > 5){
+				previousX = lerp(previousX, edgeX-halfBox, smoothX/100);
+			} else if((edgeX-x) < -5){
+				previousX = lerp(previousX, edgeX+halfBox, smoothX/100);
+			}
 		}
 		
 		return previousX;
@@ -40,8 +48,16 @@ class SmoothBox{
 			// println(abs(x-previousX)>mouseX-halfBox); 
 			smoothedY = smoothedY(y,smoothY);
 			previousY = smoothedY;
+			edgeY = smoothedY;
 			return smoothedY;
+		} else {
+			if((edgeY-y) > 5){
+				previousY = lerp(previousY, edgeY-halfBox, smoothY/100);
+			} else if((edgeY-y) < -5){
+				previousY = lerp(previousY, edgeY+halfBox, smoothY/100);
+			}
 		}
+		
 		return previousY;
 	}
 
